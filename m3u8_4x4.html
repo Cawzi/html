@@ -29,7 +29,8 @@
             display: grid;
             grid-template-rows: repeat(2, 245px);
             grid-template-columns: repeat(2, 400px);
-            /*gap: 15px;*/
+            /*gap: 15px;
+*/
         }
 
         .txturl {
@@ -73,33 +74,37 @@
 
 <body class="main">
     <div>
-        <textarea id="urls" name="urls" cols="113" rows="4" style="resize:none;" onchange="messagechanged()"></textarea>
+        <textarea id="urls" name="urls" cols="111" rows="4" style="resize:none;" onchange="messagechanged()"></textarea>
     </div>
     <div>
         <section id="layout" class="layout">
             <div>
-                <div id="url0" class="txturl"></div><video id="my_video_0" class="video-js vjs-default-skin" controls
+                <div id="url0" class="txturl"></div>
+                <video id="my_video_0" class="video-js vjs-default-skin" controls
                     preload="auto" width="400" height="224" data-setup='{}'>
                     <source src="" type="application/x-mpegURL">
                 </video>
             </div>
             <div>
-                <div id="url1" class="txturl"></div><video id="my_video_1" class="video-js vjs-default-skin" controls
+                <div id="url1" class="txturl"></div>
+                <video id="my_video_1" class="video-js vjs-default-skin" controls
                     preload="auto" width="400" height="224" data-setup='{}'>
                     <source src="" type="application/x-mpegURL">
                 </video>
             </div>
             <div>
-                <div id="url2" class="txturl"></div><video id="my_video_2" class="video-js vjs-default-skin" controls
+                <video id="my_video_2" class="video-js vjs-default-skin" controls
                     preload="auto" width="400" height="224" data-setup='{}'>
                     <source src="" type="application/x-mpegURL">
                 </video>
+                <div id="url2" class="txturl"></div>
             </div>
             <div>
-                <div id="url3" class="txturl"></div><video id="my_video_3" class="video-js vjs-default-skin" controls
+                <video id="my_video_3" class="video-js vjs-default-skin" controls
                     preload="auto" width="400" height="224" data-setup='{}'>
                     <source src="" type="application/x-mpegURL">
                 </video>
+                <div id="url3" class="txturl"></div>
             </div>
         </section>
     </div>
