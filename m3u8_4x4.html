@@ -89,13 +89,26 @@
         player2.play();
         player3.play();
     }
+
+    document.onkeydown = function (event) {
+        var oEvent = event ? event : (window.event ? window.event : null);
+        isKeyPressed(oEvent);
+    }
+    function isKeyPressed(event) {
+        rest();
+    }
 </script>
 
 <body class="main">
     <div style="display: flex;">
         <textarea id="urls" name="urls" cols="100" rows="4" style="resize:none;background-color:darkgrey;"
             onchange="messagechanged()"></textarea>
-        <button style="width: 77px;height:69px;margin-left: 2px;background-color:darkgray;border-color: darkgray;" onclick="rest()">重置</button>
+        <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+            <button style="width: 77px;height:34px;margin-left: 2px;background-color:red;border-color: red;"
+                onclick="messagechanged()">播放</button>
+            <button style="width: 77px;height:34px;margin-left: 2px;background-color:darkgray;border-color: darkgray;"
+                onclick="rest()">重置</button>
+        </div>
     </div>
     <div>
         <section id="layout" class="layout">
