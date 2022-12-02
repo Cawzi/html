@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>4X4M3U8</title>
+    <!-- <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <script src="https://unpkg.com/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script> -->
+
+    <link href="https://vjs.zencdn.net/7.0.0/video-js.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/7.0.0/video.min.js"></script>
+
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .layout {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-rows: repeat(1, 401px);
+            grid-template-columns: repeat(4, 220px);
+            gap: 3px;
+        }
+
+        .txturl {
+            width: 220px;
+            height: 21px;
+            color: gainsboro;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .vjs-has-started .vjs-control-bar {
+            opacity: 0.1 !important;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+    function messagechanged() {
+        rest();
+        // 获取URLS并去空
+        let urls = document.getElementById("urls").value;
+        let snsArr = urls.split(/[(\r\n)\r\n]+/);
+        snsArr.forEach((item, index) => {
+            if (!item) {
+                snsArr.splice(index, 1);//删除空项
+            }
+        })
+        console.log(snsArr)
+        // 更新节点
+
+        snsArr.forEach((item, index) => {
+            if (index < 9) {
+                document.getElementById("url" + index).innerText = item;
+                let player = videojs("my_video_" + index);
+                player.src(item);
+                player.play();
+            }
+        })
+    }
+    function rest() {
+        let player0 = videojs("my_video_0");
+        let player1 = videojs("my_video_1");
+        let player2 = videojs("my_video_2");
+        let player3 = videojs("my_video_3");
+        player0.src("https://xxxx.xxxx.xxxx.xxxx/xx.m3u8");
+        player1.src("https://xxxx.xxxx.xxxx.xxxx/xx.m3u8");
+        player2.src("https://xxxx.xxxx.xxxx.xxxx/xx.m3u8");
+        player3.src("https://xxxx.xxxx.xxxx.xxxx/xx.m3u8");
+        player0.play();
+        player1.play();
+        player2.play();
+        player3.play();
+    }
+
+    document.onkeydown = function (event) {
+        var oEvent = event ? event : (window.event ? window.event : null);
+        isKeyPressed(oEvent);
+    }
+    function isKeyPressed(event) {
+        rest();
+    }
+</script>
+
+<body class="main">
+    <div style="display: flex;">
+        <textarea id="urls" name="urls" cols="112" rows="4" style="resize:none;background-color:darkgrey;"
+            onchange="messagechanged()"></textarea>
+        <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+            <button style="width: 80px;height:34px;margin-left: 2px;background-color:red;border-color: red;"
+                onclick="messagechanged()">播放</button>
+            <button style="width: 80px;height:34px;margin-left: 2px;background-color:darkgray;border-color: darkgray;"
+                onclick="rest()">重置</button>
+        </div>
+    </div>
+    <div>
+        <section id="layout" class="layout">
+            <div>
+                <video id="my_video_0" class="video-js vjs-default-skin" controls preload="auto" width="220"
+                    height="380" data-setup='{}'>
+                    <source src="" type="application/x-mpegURL">
+                </video>
+                <div id="url0" class="txturl"></div>
+            </div>
+            <div>
+                <video id="my_video_1" class="video-js vjs-default-skin" controls preload="auto" width="220"
+                    height="380" data-setup='{}'>
+                    <source src="" type="application/x-mpegURL">
+                </video>
+                <div id="url1" class="txturl"></div>
+            </div>
+            <div>
+                <video id="my_video_2" class="video-js vjs-default-skin" controls preload="auto" width="220"
+                    height="380" data-setup='{}'>
+                    <source src="" type="application/x-mpegURL">
+                </video>
+                <div id="url2" class="txturl"></div>
+            </div>
+            <div>
+                <video id="my_video_3" class="video-js vjs-default-skin" controls preload="auto" width="220"
+                    height="380" data-setup='{}'>
+                    <source src="" type="application/x-mpegURL">
+                </video>
+                <div id="url3" class="txturl"></div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
